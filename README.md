@@ -186,14 +186,14 @@ VALUES
 
 以下の手順でブログ記事の作成機能を作成していきましょう。
 
-## Form
+## Form⭕️
 
 Form クラスの役割を再掲しますが、フロントエンド（HTML フォームなど）から送信されるデータを受け取るためのデータオブジェクトを定義します。
 
 form パッケージに`BlogForm.java`を作成してください。  
 どのフィールドを定義するか考えてみてください。
 
-## Repository（Mapper Interface）
+## Repository（Mapper Interface）⭕️
 
 データベースに保存するための Mapper Interface を作成します。
 
@@ -202,20 +202,20 @@ save メソッドを定義してください。
 ・戻り値：なし（void）
 ・処理内容：タイトルと内容を INSERT し、作成日時・更新日時は CURRENT_TIMESTAMP を設定
 
-## Mapper XML
+## Mapper XML⭕️
 
 Mapper Interface に対応する SQL を resources/mapper/BlogMapper.xml に定義します。
 ・MyBatis 3 の標準形式で作成（DOCTYPE を含む）
 ・save メソッドと同じ id を使う
 ・SQL では INSERT INTO blogs (title, content, created_at, updated_at) VALUES (#{title}, #{content}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) の形で保存
 
-## Service
+## Service⭕️
 
 ビジネスロジックを作成してください。
 
 `create`メソッドを作成し、Form から Entity に詰め直して保存するように実装してください
 
-## Controller（Get リクエスト）
+## Controller（Get リクエスト）⭕️
 
 ブログ作成画面のリクエストが来た際にフォームをレスポンスする実装をしてください。
 
@@ -225,7 +225,7 @@ Mapper Interface に対応する SQL を resources/mapper/BlogMapper.xml に定�
 - `/blogs/new`にリクエストが来た際に動作するようにしてください。
 - `src/main/resources/templates/blog/form.html`を表示してください
 
-## Controller（Post リクエスト）
+## Controller（Post リクエスト）⭕️
 
 ブログ作成のリクエストが来た際に保存する実装をしてください。
 
@@ -280,11 +280,11 @@ service パッケージに`BlogService.java`を作成してください。
 
 以下の手順でブログ記事の更新機能を作成していきましょう。
 
-## Repository（Mapper Interface）
+## Repository（Mapper Interface）⭕️
 
 repository パッケージの BlogMapper.java に update メソッドを作成してください。
 
-## Mapper XML
+## Mapper XML⭕️
 
 Mapper Interface に対応する SQL を resources/mapper/BlogMapper.xml に定義します。
 
@@ -292,7 +292,7 @@ update メソッドと同じ id を使用してください。
 
 SQL では、タイトルと内容を更新し、更新日時を現在時刻に設定します。
 
-## Service
+## Service⭕️
 
 ビジネスロジックを作成してください。
 
