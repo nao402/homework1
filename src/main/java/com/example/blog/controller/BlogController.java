@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ public class BlogController {
     @Autowired
     private BlogService blogService;
 
-    @GetMapping("")
+    @GetMapping
     public String list(Model model) {
         List<Blog> blogs = blogService.list();
 
@@ -39,7 +40,7 @@ public class BlogController {
         return "blog/detail";
     }
 
-    @GetMapping("/{id}/edit")
+    /*@GetMapping("/{id}/edit")
     public String editView(@PathVariable("id") int id, Model model) {
 
         Blog blog = blogService.detail(id);
@@ -47,18 +48,18 @@ public class BlogController {
         model.addAttribute("blog", blog);
 
         return "blog/form";
-    }
+    }*/
 
     @GetMapping("/new")
-    public String create(Model model) {
+    public String newForm(Model model) {
         model.addAttribute("blog", new BlogForm());
         return "blog/form";
     }
 
-    @PostMapping("")
-    public String createProcess(BlogForm form) {
+    @PostMapping
+    public String create(@ModelAttribute BlogForm form) {
         blogService.create(form);
-        return "blog/list";
+        return "redirect:/blogs";
     }
 
 }
