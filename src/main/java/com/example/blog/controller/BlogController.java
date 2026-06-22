@@ -40,15 +40,6 @@ public class BlogController {
         return "blog/detail";
     }
 
-    /*@GetMapping("/{id}/edit")
-    public String editView(@PathVariable("id") int id, Model model) {
-
-        Blog blog = blogService.detail(id);
-
-        model.addAttribute("blog", blog);
-
-        return "blog/form";
-    }*/
 
     @GetMapping("/new")
     public String newForm(Model model) {
