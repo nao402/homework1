@@ -6,18 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.blog.entity.Blog;
+import com.example.blog.form.BlogForm;
 import com.example.blog.service.BlogService;
 
 @Controller
+@RequestMapping("/blogs")
 public class BlogController {
 
     @Autowired
     private BlogService blogService;
 
-    @GetMapping("/blogs")
+    @GetMapping
     public String list(Model model) {
         List<Blog> blogs = blogService.list();
 
@@ -26,13 +31,26 @@ public class BlogController {
         return "blog/list";
     }
 
-    @GetMapping("/blogs/{id}")
+    @GetMapping("/{id}")
     public String detail(@PathVariable("id") int id, Model model) {
 
         Blog blog = blogService.detail(id);
 
         model.addAttribute("blog", blog);
         return "blog/detail";
+    }
+
+
+    @GetMapping("/new")
+    public String newForm(Model model) {
+        model.addAttribute("blog", new BlogForm());
+        return "blog/form";
+    }
+
+    @PostMapping
+    public String create(@ModelAttribute BlogForm form) {
+        blogService.create(form);
+        return "redirect:/blogs";
     }
 
 }
