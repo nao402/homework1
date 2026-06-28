@@ -329,11 +329,11 @@ Form から Entity に詰め直して更新するように実装してくださ�
 
 以下の手順でブログ記事の削除機能を作成していきましょう。
 
-## Repository（Mapper Interface）
+## Repository（Mapper Interface）⭕️
 
 repository パッケージの BlogMapper.java に delete メソッドを作成してください。
 
-## Mapper XML
+## Mapper XML⭕️
 
 Mapper Interface に対応する SQL を resources/mapper/BlogMapper.xml に定義します。
 
@@ -341,13 +341,13 @@ delete メソッドと同じ id を使用してください。
 
 SQL では、指定された ID のレコードの削除日時（deleted_at）を現在時刻に更新するようにします。
 
-## Service
+## Service⭕️
 
 ビジネスロジックを作成してください。
 
 削除リクエストを受け取り、Repository の delete メソッドを呼び出す実装をしてください。
 
-## Controller
+## Controller⭕️
 
 削除リクエストが来た際に、削除処理を行う実装をしてください。
 
