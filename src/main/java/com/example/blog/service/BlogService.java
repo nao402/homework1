@@ -25,8 +25,12 @@ public class BlogService {
         return blogMapper.findById(id);
     }
 
-    public void update(int id, Blog blog) {
+    public void update(int id, BlogForm form) {
+        Blog blog = new Blog();
         blog.setId(id);
+
+        blog.setTitle(form.getTitle());
+        blog.setContent(form.getContent());
 
         blogMapper.update(blog);
 

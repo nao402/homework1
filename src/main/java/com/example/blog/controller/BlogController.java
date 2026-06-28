@@ -40,7 +40,6 @@ public class BlogController {
         return "blog/detail";
     }
 
-
     @GetMapping("/new")
     public String newForm(Model model) {
         model.addAttribute("blog", new BlogForm());
@@ -50,6 +49,30 @@ public class BlogController {
     @PostMapping
     public String create(@ModelAttribute BlogForm form) {
         blogService.create(form);
+        return "redirect:/blogs";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String editForm(@PathVariable("id") int id, Model model) {
+        Blog blog = blogService.detail(id);
+
+        BlogForm form = new BlogForm();
+        form.setId(blog.getId());
+        form.setTitle(blog.getTitle());
+        form.setContent(blog.getContent());
+
+        model.addAttribute("blog", form);
+
+        return "blog/form";
+
+    }
+
+    @PostMapping("/{id}")
+
+    public String update(@PathVariable("id") int id, @ModelAttribute BlogForm form) {
+
+        blogService.update(id, form);
+
         return "redirect:/blogs";
     }
 
